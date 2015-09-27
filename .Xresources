@@ -1,0 +1,76 @@
+! reload x: xrdb ~/.Xdefaults
+
+Xcursor.theme: /usr/share/icons/Mac_OSX_Lion/index.theme
+! Xcursor -------------------------------------------------------------
+!Xcursor.theme: MacOSX_Lion
+!Xcursor.size:  12
+
+! Urxvt ---------------------------------------------------------------
+!urxvt*font:        xft:Droid Sans Mono:style=Regular:pixelsize=22:antialias=true:hinting=true:hintstyle=hintfull
+URxvt.font: xft:Droid Sans Mono Slashed:pixelsize=30:Regular
+Rxvt*boldFont:    xft:Droid Sans Mono:style=Regular:pixelsize=11:antialias=true:hinting=true:hintstyle=hintfull
+Rxvt*title: Terminal
+URxvt*borderless: true
+URxvt*saveLines: 500
+URxvt*internalBorder: 0
+!ScrollBar
+URxvt*scrollBar: false
+!URxvt*scrollstyle: xterm
+!URxvt*scrollBar_right: true
+!URxvt*transpscrollbar: false
+!Links
+URxvt*perl-ext-common: default,matcher,-option-popup,-selection-popup,-realine
+URxvt*matcher.button: 1
+URxvt*urlLauncher: chromium
+!Grounds
+URxvt*background:  #111111
+Rxvt*background: #000000
+Rxvt*foreground:  #ff1493
+URxvt*borderColor: #111111
+!Cursor
+Rxvt*cursorColor: #4E93F1
+Rxvt*cursorBlink: true
+URxvt*cursorUnderline: false
+
+! Xterm ---------------------------------------------------------------
+!XTerm*background: #111111
+XTerm*background: #000000
+XTerm*foreground: #e5e5e5
+XTerm*cursorColor: #4e93f1
+XTerm*cursorBlink: true
+!XTerm*scrollBar: false
+XTerm*saveLines: 50
+XTerm*borderless: true
+XTerm*title: xterm
+!XTerm*font:	xft:DroidSansMono:style=Regular:pixelsize=22:antialias=true:hinting=true
+XTerm*font: Terminus:style=Regular:size=10
+
+! Colors ---------------------------------------------------------------
+!black
+ *color0:  #000000
+! color8:  #111111
+!red
+ *color1:  #8C4665
+ *color9:  #BF4D80
+!green
+ *color2:  #88be32
+ *color10: #aff73e
+!yellow
+ *color3:  #8B769F
+ *color11: #C4A1E6
+!blue
+ *color4:  #4e93f1
+ *color12: #64B9F8
+!magenta
+ *color5:  #5E468C
+ *color13: #7E62B3
+!cyan
+ *color6:  #31658C
+ *color14: #6096BF
+!white
+ *color7:  #899CA1
+ *color15: #C0C0C0
+ *color16: #AAAAAA
+!grey
+ *color17: #fcfcfc
+
