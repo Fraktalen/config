@@ -1,0 +1,269 @@
+
+set $mod Mod1
+set $win Mod4
+
+# Tab back and forth between workspaces
+bindsym $mod+Tab workspace back_and_forth
+
+# Move through workspaces
+bindsym $mod+p workspace prev
+bindsym $mod+n workspace next
+
+# Send window to next or prev workspace and move focus (does not change view)
+bindsym $mod+Shift+p move workspace prev; workspace prev
+bindsym $mod+Shift+n move workspace next; workspace next
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Turn off backlight and lock screen
+bindsym $win+l exec sleep 1 && xset dpms force off; exec slock
+
+# Mount usb
+#bindsym Mod1+Control+m exec sudo mount -o rw,noauto,async,user,umask=1000 /dev/sdb1 /media/usb
+
+# Go into hibernation
+#bindsym Mod4+Shift+F9 exec sudo hibernate -F /etc/hibernate/tuxonice.conf
+
+#####################
+#
+# PROGRAM LAUNCH
+#
+#####################
+
+# Screenlock
+bindsym $mod+y exec slock
+
+# word processor
+bindsym $win+w exec abiword
+
+# copy paste
+#bindsym $win+c xsel -i; exit
+bindsym $win+c exec xsel -x; xsel -o -b
+#bindsym $win+v xsel -i; xdotool click 2; xsel -x;
+bindsym $win+v xsel -o
+
+# start a terminal
+bindsym $win+t exec xterm
+#bindsym $mod+Return exec rxvt -name rxvt
+
+# Take a full screenshot
+bindsym $win+Shift+3 exec scrot /home/user/Pictures/screenshot_`date +"%d-%m-%y-%T"`.jpg
+# Take a partial screenshot
+bindsym $win+Shift+4 exec scrot -s /home/user/Pictures/screenshot_`date +"%T"`.jpg
+
+
+# kill focused window
+bindsym $mod+q kill
+
+# Filesharing
+bindsym $win+z exec filezilla
+
+# kill internet
+# bindsym $mod+ exec killall netctl dhcpcd wpa_supplicant
+
+# start dmenu (a program launcher)
+bindsym $mod+d exec dmenu_run
+# audio buttons
+bindsym XF86AudioRaiseVolume exec amixer -c 0 set Master 2dB+
+bindsym XF86AudioLowerVolume exec amixer -c 0 set Master 2dB-
+bindsym XF86AudioMute exec /home/user/.i3/muteScript.sh
+
+# browsers
+bindsym $win+f exec ~/.mozilla/firefox/tmpfs_firefox.sh; exec firefox &  exit
+# memory limited firefox
+#bindsym $win+f exec ulimit -d 400000; firefox 
+bindsym $win+m exec chromium
+
+# virtualbox
+#bindsym $win+v exec VirtualBox
+
+# music
+bindsym $win+d exec deadbeef
+
+# file manager
+bindsym $win+r exec rxvt -e ranger
+bindsym $mod+o exec thunar
+
+
+###############################
+#
+# BEHAVIOR
+#
+###############################
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+#################################
+#
+# LOOKS
+#
+#################################
+
+# xft for antialiased font
+# Top bar
+font xft:Droid Sans 6
+#font -*-*-*-*-*-*-9-*-*-*-*-*-*
+
+# color definitions
+#set $bg #2c2c2e
+set $bg #000000
+set $fg #9f9f9f
+set $hi #efef8f
+set $ac #111111
+#set $tx #3590eb
+set $tx #1793D1
+set $ia #8f8f8f
+set $be #8faf9f
+set $yw #ccdc90
+set $gn #88b090
+set $rd #a41700
+set $bk #101010
+
+set $dk #47474747
+set $pink #ff1493
+set $blue #1f79f3
+
+# set some nice colors 		border background text
+client.focused 			$bg  	$bg 	$blue
+client.unfocused 		$bg 	$bg 	$ia
+client.focused_inactive 	$bg 	$bg 	$ia
+client.urgent 			$rd 	$rd 	$tx
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        #status_command /home/user/.i3/conky
+	#status_command $HOME/bin/conky-i3bar.sh
+	#status_command i3status
+
+	#trying with py3status instead
+	status_command py3status
+
+	mode hide
+	hidden_state hide
+	modifier Mod1
+
+	# use xft plugin to i3 for antialiased font
+	font xft:Droid Sans 7
+
+	colors {
+	#statusline	#899CA1
+	#statusline	#1f79f3	
+	statusline 	#8f8f8f
+
+	# class      	      border 		backgrd 	text
+        focused_workspace     #111111 		#000000 	#1f79f4
+        active_workspace      #000000 		#000000 	#e6563a
+        inactive_workspace    #000000 		#000000 	#696f89
+        urgent_workspace      #d72f6b 		#d70a53 	#FFFF50
+   }
+}
+
+# exec start script
+exec $HOME/.i3/i3start.sh
